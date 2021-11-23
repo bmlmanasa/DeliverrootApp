@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="12dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    android:background="@drawable/cart_background"
+    android:layout_marginEnd="4dp"
+    android:layout_marginRight="10dp"
+    >
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/item03_aloe_vera_plant" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        app:civ_circle_background_color="@color/black"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="5dp"
+        app:srcCompat="@drawable/item03_aloe_vera_plant" />
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:text="Name of the Plant"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$78"
+        android:id="@+id/totalprice"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+       />
+
+
+    <TextView
+        android:id="@+id/pprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:text="$89"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editQuant"
+        app:layout_constraintBottom_toBottomOf="@id/pprice"
+        app:layout_constraintEnd_toStartOf="@+id/deletebtn"
+        android:background="@drawable/cart_background2"
+
+        app:layout_constraintStart_toEndOf="@+id/pprice">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/subtract_btn"
+            android:layout_margin="5dp"
+            android:src="@drawable/subtract" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/count"
+            android:layout_marginTop="-5dp"
+            android:text="10"
+            android:layout_margin="3dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/add_btn"
+            android:layout_margin="3dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/deletebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/delete_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/pprice"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

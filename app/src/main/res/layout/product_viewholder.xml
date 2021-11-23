@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:id="@+id/plain"
+    android:background="@drawable/roundshape"
+    android:layout_height="220dp">
+
+
+    <ImageView
+
+        android:layout_width="120dp"
+        android:id="@+id/imageT20"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/plant_item01"
+        android:layout_height="95dp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Burger"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <RatingBar
+        android:id="@+id/rating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:numStars="5"
+        android:rating="4.5"
+        android:progressTint="@color/yellow"
+        android:secondaryProgressTint="@color/yellow"
+        android:layout_height="16dp"/>
+
+    <TextView
+        android:id="@+id/txtprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$12"
+        android:textSize="20dp"
+
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+</LinearLayout>

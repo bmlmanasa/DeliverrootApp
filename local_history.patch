@@ -1,0 +1,75 @@
+Index: app/src/main/res/layout/activity_onboarding2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_onboarding2.xml	(date 1636140467055)
++++ app/src/main/res/layout/activity_onboarding2.xml	(date 1636140467055)
+@@ -5,7 +5,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".fragment_on_boarding2"
+-    android:background="@color/purple_700">
++    android:background="@color/purple_200">
+ 
+     <ImageView
+         android:id="@+id/imageView"
+@@ -24,9 +24,9 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="25dp"
+-        android:text="Deliveroot"
++        android:text="Deliverroot"
+         android:textColor="@color/black"
+-        android:textSize="20sp"
++        android:textSize="16sp"
+         android:textStyle="bold"
+         app:layout_constraintBottom_toTopOf="@+id/imageView"
+         app:layout_constraintEnd_toEndOf="parent"
+@@ -39,9 +39,9 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Skip"
++        android:onClick="skipped"
+         android:textSize="16sp"
+         android:textStyle="bold"
+-        android:id="@+id/text38"
+         android:textColor="@color/black"
+         app:layout_constraintHorizontal_bias="1"
+         android:layout_marginRight="30dp"
+@@ -55,7 +55,7 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:fontFamily="sans-serif-light"
+-        android:text="Deliver at"
++        android:text="Deliver"
+         android:textSize="42sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+@@ -69,8 +69,8 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:fontFamily="sans-serif-condensed"
+-        android:text="Your doorsteps"
+-        android:textSize="51sp"
++        android:text="Everything"
++        android:textSize="56sp"
+         android:textStyle="bold"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+@@ -84,7 +84,7 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="5dp"
+-        android:text="On demand last mile delivery just at a tap"
++        android:text="Deliver fresh"
+         android:textSize="16sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+@@ -109,6 +109,5 @@
+ 
+ 
+ 
+-
+ </androidx.constraintlayout.widget.ConstraintLayout>
+ 

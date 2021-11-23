@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "955766127521",
+    "project_id": "deliverroot-68f82",
+    "firebase_url": "https://deliverroot-68f82-default-rtdb.firebaseio.com",
+    "storage_bucket": "deliverroot-68f82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955766127521:android:e9c7527aafea1fcb9c29e0",
+        "android_client_info": {
+          "package_name": "com.example.deliverroot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955766127521-klcgj3fc1e22po503dfajp13hqqejtad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.deliverroot",
+            "certificate_hash": "a384f408fe7f93b1d120b7a3a1b7a6a5c8abefa2"
+          }
+        },
+        {
+          "client_id": "955766127521-pojoq6h18utpfamsm3qeme6n246rhdfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCudIhufAynf7Xw-EQmOqqWfIM3CdGqxu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955766127521-pojoq6h18utpfamsm3qeme6n246rhdfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
