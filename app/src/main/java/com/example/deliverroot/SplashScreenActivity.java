@@ -25,11 +25,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences msharedp =getSharedPreferences("SharePref",MODE_PRIVATE);
-                boolean isfirstTime=msharedp.getBoolean("firstime",true);
+                boolean isfirstTime=msharedp.getBoolean("firstimep1",true);
                 if(isfirstTime){
                     startActivity(new Intent(SplashScreenActivity.this,IntroductoryActivity.class));
                     SharedPreferences.Editor editor = msharedp.edit();
-                    editor.putBoolean("firstime",true);
+                    editor.putBoolean("firstimep1",false);
                     editor.commit();
                 }
                 else{

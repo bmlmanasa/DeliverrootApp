@@ -1,5 +1,6 @@
 package com.example.deliverroot;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,19 +19,25 @@ import com.example.deliverroot.models.CategoryProductModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class WishListActivity extends AppCompatActivity implements WishListAdapter.OnListclickListener{
     FirebaseAuth fAuth;
     FirebaseUser user;
+    ImageView  noItems;
     RecyclerView wishView2;
     WishListAdapter Adapter;
     String UserID;
+    DatabaseReference d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
+        noItems=findViewById(R.id.noItems);
 
         wishView2=findViewById(R.id.wishview2);
         Toolbar t1=findViewById(R.id.toolbar10);
@@ -45,9 +53,11 @@ public class WishListActivity extends AppCompatActivity implements WishListAdapt
         user=fAuth.getCurrentUser();
         UserID=user.getUid();
 
-        DatabaseReference d= FirebaseDatabase.getInstance().getReference("users").child(UserID);
+        d= FirebaseDatabase.getInstance().getReference("users").child(UserID);
 
         addWishItems();
+
+
 
     }
 
@@ -61,6 +71,7 @@ public class WishListActivity extends AppCompatActivity implements WishListAdapt
         wishView2.setLayoutManager(gridLayoutManager);
         Adapter =new WishListAdapter(options,this);
         wishView2.setAdapter(Adapter);
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app2="http://schema.android.com/apk/res/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,19 +10,22 @@
 
     <ImageView
         android:id="@+id/backbtn"
-        android:layout_width="415dp"
-        android:layout_height="310dp"
+        android:layout_width="546dp"
+        android:layout_height="302dp"
 
+        android:layout_marginTop="4dp"
+        android:background="#D9EDEB"
         android:elevation="2dp"
-        android:src="@drawable/plants_0"
+        android:src="@drawable/sculentss"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="415dp"
-        android:layout_height="170dp"
+        android:layout_width="428dp"
+        android:layout_height="169dp"
         android:elevation="2dp"
         android:src="@drawable/logo"
 
@@ -34,13 +38,19 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="415dp"
-        android:layout_height="500dp"
-
-        android:src="@drawable/plants_1"
+        android:layout_width="546dp"
+        android:layout_height="302dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFDED9 "
+        android:backgroundTint="#FFDED9 "
+        android:src="@drawable/yellow2"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-         />
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

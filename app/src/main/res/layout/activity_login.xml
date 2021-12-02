@@ -80,7 +80,7 @@
             android:text="Login"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:id="@+id/loginBtn"
+            android:id="@+id/submit"
 
             android:textColor="#FFF"
             android:layout_marginTop="20dp"/>

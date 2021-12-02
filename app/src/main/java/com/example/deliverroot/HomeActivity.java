@@ -10,17 +10,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.deliverroot.models.Categorymodel;
@@ -42,13 +47,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     Menu menu;
-    TextView textView;
+    TextView username;
     private RecyclerView recyclerView,recyclerView2;
     private CategoryAdapter categoryAdapter;
     private ProductAdapter productAdapter;
     FirebaseAuth fAuth;
     FirebaseUser user;
     ImageView cartbtn;
+    Dialog  dialog;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -61,6 +67,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        username=findViewById(R.id.textView16);
+
+        dialog=new Dialog(this);
 
         cartbtn=findViewById(R.id.cartbutton);
         cartbtn.setOnClickListener(new View.OnClickListener() {
@@ -120,11 +130,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setName();
 
         ArrayList<ProductModel> item1=new ArrayList<>();
-        item1.add(new ProductModel(R.drawable.gardening,"Snake Plant",3.2f,"$12"));
-        item1.add(new ProductModel(R.drawable.plant_item01,"Money Plant",3.2f,"$5"));
-        item1.add(new ProductModel(R.drawable.plant_item02,"sundra orr",3.2f,"$9"));
-        item1.add(new ProductModel(R.drawable.item03_aloe_vera_plant,"Alovera",3.2f,"$10"));
-        item1.add(new ProductModel(R.drawable.plant_item01,"Grape Ivy",3.2f,"$18"));
+        item1.add(new ProductModel(R.drawable.gardening,"Snake Plant",3.2f,"₹12"));
+        item1.add(new ProductModel(R.drawable.plant_item01,"Money Plant",3.2f,"₹5"));
+        item1.add(new ProductModel(R.drawable.plant_item02,"sundra orr",3.2f,"₹9"));
+        item1.add(new ProductModel(R.drawable.item03_aloe_vera_plant,"Alovera",3.2f,"₹10"));
+        item1.add(new ProductModel(R.drawable.plant_item01,"Grape Ivy",3.2f,"₹18"));
 
 
         recyclerView2=findViewById(R.id.recentView);
@@ -156,7 +166,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_collections:
-                Intent intent2=new Intent(HomeActivity.this,BlogActivity.class);
+                Intent intent2=new Intent(HomeActivity.this,CollectionsActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.nav_wishlist:
@@ -172,15 +182,42 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 fAuth.signOut();
 
                 startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+                finish();
                 break;
 
-            case R.id.nav_share:
-                Toast.makeText(this, "shared", Toast.LENGTH_SHORT).show();
+            case R.id.nav_aboutus:
+                startActivity(new Intent(HomeActivity.this,AboutUs.class));
                 break;
+            case R.id.nav_rateus:
+                openDialog();
+                break;
+
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openDialog() {
+        dialog.setContentView(R.layout.dialoglayout1);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ImageView   imageView=dialog.findViewById(R.id.close);
+        Button btn=dialog.findViewById(R.id.submit);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Toast.makeText(HomeActivity.this, "Thank You for rating us", Toast.LENGTH_SHORT).show();
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     public void openProducts(View v){
@@ -191,14 +228,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
        View header=navigationView.getHeaderView(0);
        final TextView name=header.findViewById(R.id.Productname);
        TextView email=header.findViewById(R.id.email);
+        final ImageView   profilePic=header.findViewById(R.id.profilePic);
         user=fAuth.getCurrentUser();
        final String UserID=user.getUid();
 
-        DatabaseReference d=FirebaseDatabase.getInstance().getReference("users").child(UserID).child("username");
+        DatabaseReference d=FirebaseDatabase.getInstance().getReference("users").child(UserID);
         d.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                name.setText(dataSnapshot.getValue().toString());
+                name.setText(dataSnapshot.child("username").getValue().toString());
+                username.setText(dataSnapshot.child("username").getValue().toString());
+                Glide.with(getApplicationContext()).load(dataSnapshot.child("pimage").getValue().toString()).into(profilePic);
             }
 
             @Override

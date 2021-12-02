@@ -4,14 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         memail = findViewById(R.id.email);
         mpassword = findViewById(R.id.password);
         signup=findViewById(R.id.signup);
-        loginbtn1=findViewById(R.id.loginBtn);
+        loginbtn1=findViewById(R.id.submit);
 
         fAuth = FirebaseAuth.getInstance();
         loginbtn1.setOnClickListener(new View.OnClickListener() {

@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class WishListAdapter  extends FirebaseRecyclerAdapter<CategoryProductModel, WishListAdapter.WishViewHolder> {
     OnListclickListener onListclickListener;
+    int itemc;
     public WishListAdapter(@NonNull FirebaseRecyclerOptions<CategoryProductModel> options,OnListclickListener onListclickListener) {
         super(options);
         this.onListclickListener=onListclickListener;
@@ -54,6 +55,7 @@ public class WishListAdapter  extends FirebaseRecyclerAdapter<CategoryProductMod
 
     }
 
+
     @NonNull
     @Override
     public WishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,7 +69,6 @@ public class WishListAdapter  extends FirebaseRecyclerAdapter<CategoryProductMod
         TextView cost;
         ImageView image;
         ImageView addbtn,productwish;
-        WishListAdapter.OnListclickListener onListclickListener;
 
         public WishViewHolder(@NonNull View itemView,final  WishListAdapter.OnListclickListener onListclickListener) {
             super(itemView);

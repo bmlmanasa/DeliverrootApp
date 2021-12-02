@@ -49,14 +49,14 @@
 
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/share_icon"
-                android:title="Share" />
+                android:id="@+id/nav_aboutus"
+                android:icon="@drawable/aboutus"
+                android:title="About Us" />
 
             <item
-                android:id="@+id/nav_plane4"
+                android:id="@+id/nav_rateus"
                 android:icon="@drawable/rate_icon"
-                android:title="Rate-Us" />
+                android:title="Rate Us" />
         </menu>
 
     </item>

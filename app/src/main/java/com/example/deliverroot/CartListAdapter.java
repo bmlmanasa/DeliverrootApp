@@ -18,12 +18,16 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartListAdapter.WishViewHolder> {
 
     static int totalPrice=0;
+    ArrayList<CartModel> cartlistItems;
     DatasetListener datasetListener;
     public CartListAdapter(@NonNull FirebaseRecyclerOptions<CartModel> options, DatasetListener datasetListener) {
         super(options);
+        cartlistItems=new ArrayList<>();
         this.datasetListener=datasetListener;
         totalPrice=0;
     }
@@ -31,7 +35,7 @@ public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartList
     protected void onBindViewHolder(@NonNull final WishViewHolder holder, final int position, @NonNull final CartModel model) {
         holder.name.setText(model.getName());
         holder.price.setText("₹"+model.getPrice());
-
+        cartlistItems.add(model);
         holder.quantity.setText(model.getQuantity());
         Glide.with(holder.image).load(model.getImageurl()).into(holder.image);
 
@@ -46,7 +50,11 @@ public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartList
                 FirebaseDatabase.getInstance().getReference("users").child(u).child("cartlist")
                     .child(getRef(position).getKey()).removeValue();
                 notifyDataSetChanged();
-                Toast.makeText(holder.deletebtn.getContext(),"deleted",Toast.LENGTH_SHORT).show();
+               int total=changeTotal(getRef(position).getKey(),cartlistItems);
+                totalPrice=totalPrice-total;
+                datasetListener.setValues(totalPrice);
+                Toast.makeText(holder.deletebtn.getContext(), "Deleted",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -73,6 +81,22 @@ public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartList
 
     }
 
+    public int changeTotal(String id,ArrayList<CartModel> cartlistItems) {
+        int amount=0;
+        totalPrice=0;
+        for(int i=0;i<cartlistItems.size();i++){
+            CartModel c=cartlistItems.get(i);
+            if(c.getId().equals(id)){
+                amount=Integer.valueOf(c.getPrice());
+                cartlistItems.remove(c);
+            }
+        }
+
+
+
+        return amount;
+    }
+
     @NonNull
     @Override
     public WishViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -80,13 +104,14 @@ public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartList
         return new WishViewHolder(view);
     }
 
-    public class WishViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
+
+
+    public class WishViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,quantity,totalprice;
         TextView price;
         ImageView image,deletebtn,addbtn,subbtn;
 
-        private ItemClickListner itemClickListner;
         public WishViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -99,12 +124,6 @@ public class CartListAdapter extends FirebaseRecyclerAdapter<CartModel, CartList
             addbtn=itemView.findViewById(R.id.add_btn);
             subbtn=itemView.findViewById(R.id.subtract_btn);
         }
-
-        @Override
-        public void onClick(View v) { itemClickListner.onClick(v,getAdapterPosition(),false); }
-
-        public void setItemClickListner(ItemClickListner itemClickListner) {
-            this.itemClickListner = itemClickListner;
-        }
     }
+
 }

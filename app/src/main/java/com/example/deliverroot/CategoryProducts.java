@@ -122,7 +122,6 @@ public class CategoryProducts extends AppCompatActivity implements CategoryProdu
 
 
 
-
     @Override
     public void addedToCart(int pos) {
 
@@ -130,7 +129,7 @@ public class CategoryProducts extends AppCompatActivity implements CategoryProdu
 
         final CartModel item= new CartModel(c.getId(),c.getImageurl(),c.getProductName(),c.getCost(),"1");
         d.child("cartlist").child(c.getId()).setValue(item);
-        Toast.makeText(CategoryProducts.this,"added",Toast.LENGTH_SHORT).show();
+        Toast.makeText(CategoryProducts.this,"Added "+c.getProductName(),Toast.LENGTH_SHORT).show();
     }
 
     @Override

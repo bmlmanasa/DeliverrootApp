@@ -94,7 +94,6 @@ public class CategoryProductsAdapter extends RecyclerView.Adapter<CategoryProduc
             addbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    addbtn.setImageResource(R.drawable.profile_pic);
                     onListclickListener.addedToCart(getAdapterPosition());
                 }
             });

@@ -45,6 +45,7 @@
                 android:layout_height="256dp"
                 android:layout_marginTop="16dp"
                 android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:background="@drawable/back"
                 android:src="@drawable/bg1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,32 +55,33 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/productname"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/productprice">
+                tools:layout_editor_absoluteY="344dp">
 
                 <ImageView
+                    android:id="@+id/minus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/minus"
                     android:src="@drawable/minus_icon" />
 
                 <TextView
                     android:id="@+id/count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
-                    android:layout_marginTop="-3dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-3dp"
                     android:layout_marginRight="10dp"
+                    android:text="1"
                     android:textColor="@color/black"
                     android:textSize="26sp" />
 
 
                 <ImageView
+                    android:id="@+id/plus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/plus"
                     android:src="@drawable/plus_icon" />
             </LinearLayout>
 
@@ -92,7 +94,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Nasi Padang"
                 android:textColor="#333333"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_image" />
@@ -102,22 +104,10 @@
                 android:id="@+id/pprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="$199"
-                android:textColor="@color/dark_green"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="@+id/Productname"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/Productname" />
-
-
-            <TextView
-                android:id="@+id/productprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:textSize="25sp"
+                android:text="$199"
                 app:layout_constraintStart_toStartOf="@id/Productname"
                 app:layout_constraintTop_toBottomOf="@id/Productname" />
 
@@ -125,14 +115,13 @@
                 android:id="@+id/Productdesc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:lineSpacingExtra="2dp"
                 android:text="Nasi Padang is a Padang steamed rice served with various choices of pre-cooked dishes originated from West Sumatra, Indonesia. It is known across Indonesia as Nasi Padang, after the city of Padang the capital of West Sumatra province."
                 android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/pprice"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/productprice"
-                app:layout_constraintTop_toBottomOf="@+id/productprice" />
+                tools:layout_editor_absoluteY="398dp" />
 
 
             <LinearLayout
